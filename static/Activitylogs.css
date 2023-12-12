@@ -1,0 +1,47 @@
+/* Activitylogs.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.activity-log-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+#activity-log-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.activity-log-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+    .activity-log-item:last-child {
+        border-bottom: none;
+    }
+
+    .activity-log-item span.timestamp {
+        color: #777;
+        font-size: 12px;
+    }
+
+    .activity-log-item span.description {
+        margin-left: 10px;
+    }
+
+/* You can customize the styles further based on your preferences */

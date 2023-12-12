@@ -1,0 +1,91 @@
+<!-- activitylogs.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Activitylogs.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .activity-log-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        #activity-log-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .activity-log-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logID, .timestamp, .user-id, .user-name, .description {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .user-name {
+            font-weight: bold;
+        }
+
+        .description {
+            flex: 3;
+            text-align: left;
+        }
+
+        .column-heading {
+            font-weight: bold;
+            /* Remove background-color and padding */
+        }
+    </style>
+    <title>Activity Logs</title>
+</head>
+<body>
+
+    <div class="activity-log-container">
+        <h2>Activity Logs</h2>
+        <ul id="activity-log-list">
+            <li class="activity-log-item">
+                <span class="column-heading logID">Log ID</span>
+                <span class="column-heading timestamp">Timestamp</span>
+                <span class="column-heading user-id">User ID</span>
+                <span class="column-heading user-name">User Name</span>
+                <span class="column-heading description">Description</span>
+            </li>
+            {% for log in activity_logs %}
+            <li class="activity-log-item">
+                <span class="logID">{{ log.Log_ID }}</span>
+                <span class="timestamp">{{ log.Timestamp }}</span>
+                <span class="user-id">{{ log.User_ID }}</span>
+                <span class="user-name">{{ get_user_name(log.User_ID) }}</span>
+                <span class="description">{{ log.Activity_Description }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!-- FileSystem.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>File System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'FileSystem.css') }}">
+</head>
+<body>
+    <h1>Welcome to the File System!</h1>
+
+    {% if 'username' in session %}
+    {% if not is_admin(session['user_id']) %}
+    <!-- Button to go to the request page -->
+    <button onclick="window.location.href = '/requests'">Make Request</button>
+    {% endif %}
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">Select a file to upload:</label>
+        <!-- File upload input -->
+        <input type="file" name="file">
+        <!-- Submit button -->
+        <input type="submit" value="Upload">
+    </form>
+    {% endif %}
+
+    {% if is_admin(session['user_id']) %}
+    <!-- Display requests section for admin -->
+    <section>
+        <h2>Access Requests</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>User ID</th>
+                    <th>Requested User ID</th>
+                    <th>File Name</th>
+                    <th>File ID</th>
+                    <th>File Path</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ session['username'] }}</td>
+                    <td>{{ request.User_ID }}</td>
+                    <td>{{ request.Request_User_ID }}</td>
+                    <td>{{ get_file_name(request.File_ID) }}</td>  <!-- Use a function to get the file name -->
+                    <td>{{ request.File_ID }}</td>
+                    <td>{{ request.File_Path }}</td>
+                    <td>{{ request.Message }}</td>
+                    <td>{{ request.Status }}</td>
+                    <td>
+                        <form action="/approve_request/{{ request.Request_User_ID }}" method="POST">
+                            <button type="submit">Approve</button>
+                        </form>
+                        <form action="/reject_request/{{ request.Request_User_ID }}" method="POST">
+                            <button type="submit">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button onclick="window.location.href = '/activity_logs'">View Activity Logs</button>
+    </section>
+    {% endif %}
+
+    <table>
+        <thead>
+            <tr>
+                <th>File Name</th>
+                <th>Uploaded By</th>
+                <th>Upload Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+            <tr>
+                <td>{{ file.File_Name }}</td>
+                <td>
+                    {% if file.Uploader_ID == session['user_id'] or is_admin(session['user_id']) %}
+                    {{ file.Uploader_Name }} , {{file.Uploader_ID}}
+                    {% else %}
+                    Not Authorized
+                    {% endif %}
+                </td>
+                <td>{{ file.Time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

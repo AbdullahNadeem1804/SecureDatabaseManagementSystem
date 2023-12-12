@@ -1,0 +1,38 @@
+.container {
+  width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.25rem;
+}
+
+input {
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  margin-bottom: 0.5rem;
+  height: 10rem;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+}

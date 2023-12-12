@@ -1,0 +1,20 @@
+<!-- approve_request.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='accept_reject.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Approve Request</h1>
+        <p>Are you sure you want to approve this request?</p>
+        <form action="/approve_request/{{ request.Request_ID }}" method="POST">
+            <button type="submit">Approve</button>
+        </form>
+    </div>
+</body>
+</html>

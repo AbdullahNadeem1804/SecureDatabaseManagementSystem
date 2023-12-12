@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--<link rel="stylesheet" type="text/css" href="main_page.css" />-->
+<html lang="en">
+<head>
+    <!--i22-1597.21I-2768, 22I-4947-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Database Management System</title>
+    <!--<link rel="stylesheet" href="style.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'main_page.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Secure Database Management System</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Live Helpline</h2>
+            <p>For immediate assistance, please contact our live helpline.</p>
+            <button id="Enter" type="button" onclick="window.location.href = '/helpline' ; " class="button">Connect to Live Helpline</button>
+        </section>
+
+        <section>
+            <h2>Access Control</h2>
+            <p>Only authorized users can access the database.</p>
+            <form action="/FileSystem" method="POST">
+                <label for="id">UserID:</label>
+                <input type="number" name="User_ID" placeholder="UserID" >
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="Password" >
+                <button id="Enter" type="submit" onclick="window.location.href = '/FileSystem' ; " class="button">Login</button>
+                <!--<input name="login" type="submit" value="Login">-->
+            </form>
+            <!--<form action="/login" method="post">
+        <label for="username">
+            <i class="fa fa-user"></i>
+        </label>
+        <input type="text" name="username" placeholder="Username" id="username" required>
+        <label for="password">
+            <i class="fa fa-lock"></i>
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <div class="msg">{ msg }}</div>
+        <input type="submit" value="Login">
+    </form>-->
+        </section>
+
+        <section>
+            <h2>Authorization</h2>
+            <p>Users are granted different levels of authorization based on their roles.</p>
+            <ul>
+                <li>Administrators: Full access to all data.</li>
+                <li>Users: Read-only access to data.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2023 Secure Database Management System</p>
+    </footer>
+</body>
+</html>

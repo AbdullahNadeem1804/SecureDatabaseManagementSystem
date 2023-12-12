@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init("wv1mmCtLQ8BzavHua"); // Replace "YOUR_USER_ID" with your actual EmailJS user ID
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect to Live Helpline</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'helpline.css') }}">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Connect to Live Helpline</h1>
+    <p>Please enter your contact information below, and a live agent will be in touch shortly.</p>
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="message">Message:</label>
+      <textarea name="message" id="message" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      console.log(message);
+
+      emailjs.send("service_4zung7p", "template_85axbda", {
+        to_email: "i212768@nu.edu.pk",
+        from_name: name,
+        message: message
+      })
+        .then((response) => {
+          console.log("Email sent successfully:", response);
+          alert("Your message has been sent successfully!");
+        })
+        .catch((error) => {
+          console.error("Email sending failed:", error);
+          alert("An error occurred while sending your message. Please try again later.");
+        });
+    });
+  </script>
+</body>
+
+</html>

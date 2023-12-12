@@ -1,0 +1,21 @@
+<!-- request.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='request.css') }}">
+    <title>Request Access</title>
+</head>
+<body>
+    <h2>Request Access</h2>
+    <form method="post" action="{{ url_for('submit_request') }}">
+        <label for="file_id">File ID:</label>
+        <input type="text" name="file_id" required>
+        <label for="message">Message:</label>
+        <textarea name="message"></textarea>
+        <button type="submit">Submit Request</button>
+    </form>
+</body>
+</html>

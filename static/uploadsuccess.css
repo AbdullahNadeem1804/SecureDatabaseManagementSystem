@@ -1,0 +1,7 @@
+.success-message {
+	background-color: #4CAF50; /* Green background */
+	color: #fff; /* White text */
+	padding: 1rem; /* Padding */
+	text-align: center; /* Center text */
+	margin-bottom: 1rem; /* Bottom margin */
+}
